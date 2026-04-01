@@ -32,6 +32,7 @@ with tab1:
                 conn.commit()
                 st.success(f"Đã thêm nhân viên: {ten_nv}")
             except:
+                conn.rollback()
                 st.error("Lỗi: Tên nhân viên này đã tồn tại!")
 
     st.markdown("---")
@@ -91,6 +92,7 @@ with tab2:
                     conn.commit()
                     st.success(f"✅ Đã lưu lương tháng {thang_nam} cho {nv_chon}. Thực lãnh: {thuc_lanh:,.0f} VNĐ")
                 except:
+                    conn.rollback()
                     st.error(f"⚠️ Lỗi: Nhân viên {nv_chon} đã được tính lương trong tháng {thang_nam} rồi! Hãy kiểm tra lại.")
 
 # --- TAB 3: IN PHIẾU LƯƠNG (XUẤT PDF A5) ---
