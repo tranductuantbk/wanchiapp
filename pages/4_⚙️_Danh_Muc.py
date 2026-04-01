@@ -50,6 +50,7 @@ with tab2:
                 conn.commit()
                 st.success(f"Đã thêm khách hàng: {ten_kh}")
             except:
+                conn.rollback()
                 st.error("Lỗi: Khách hàng này đã tồn tại!")
                 
     st.markdown("---")
@@ -71,6 +72,7 @@ with tab3:
                 conn.commit()
                 st.success(f"Đã thêm vật tư: {ten_vt}")
             except:
+                conn.rollback()
                 st.error("Lỗi: Vật tư này đã tồn tại!")
                 
     st.markdown("---")
