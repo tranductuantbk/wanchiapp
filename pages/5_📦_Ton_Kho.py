@@ -73,7 +73,7 @@ with tab2:
         else:
             c = conn.cursor()
             c.execute("""INSERT INTO giao_dich_kho (ngay, loai_phieu, loai_hang, ten_hang, so_luong, ghi_chu)
-                         VALUES (?, ?, ?, ?, ?, ?)""", 
+                         VALUES (%s, %s, %s, %s, %s)""", 
                       (ngay_gd.strftime("%Y-%m-%d"), loai_phieu, loai_hang, ten_hang, so_luong, ghi_chu))
             conn.commit()
             st.success(f"✅ Đã ghi nhận {loai_phieu} {so_luong} {ten_hang} thành công!")
