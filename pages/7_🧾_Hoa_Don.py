@@ -69,7 +69,7 @@ with tab2:
             try:
                 c.execute("""INSERT INTO hoa_don 
                              (ngay_lap, so_hd, khach_hang, truoc_thue, thue_gtgt, tong_cong, phuong_thuc, ngay_tt, trang_thai, ghi_chu)
-                             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                             VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
                           (ngay_lap.strftime("%Y-%m-%d"), so_hd, khach_hang, truoc_thue, thue_gtgt, tong_cong, "", "", "Chưa TT", ghi_chu))
                 conn.commit()
                 st.success(f"✅ Đã lưu Hóa đơn {so_hd}. Tổng cộng: {tong_cong:,.0f} đ.")
@@ -98,8 +98,8 @@ with tab3:
                 if submit_tt:
                     c = conn.cursor()
                     c.execute("""UPDATE hoa_don 
-                                 SET trang_thai = 'Đã TT', phuong_thuc = ?, ngay_tt = ? 
-                                 WHERE so_hd = ?""", 
+                                 SET trang_thai = 'Đã TT', phuong_thuc = %s ngay_tt = %s 
+                                 WHERE so_hd = %s""", 
                               (phuong_thuc, ngay_tt.strftime("%Y-%m-%d"), hd_can_tt))
                     conn.commit()
                     st.success(f"✅ Đã cập nhật thanh toán cho Hóa đơn {hd_can_tt}!")
