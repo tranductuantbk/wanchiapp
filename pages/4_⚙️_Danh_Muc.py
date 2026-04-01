@@ -25,7 +25,7 @@ with tab1:
         if submit_sp and ten_sp:
             c = conn.cursor()
             try:
-                c.execute("INSERT INTO dm_san_pham (ten_sp, nhom_sp, dinh_muc_nhua, don_gia_nhua, don_gia_cong) VALUES (?, ?, ?, ?, ?)", 
+                c.execute("INSERT INTO dm_san_pham (ten_sp, nhom_sp, dinh_muc_nhua, don_gia_nhua, don_gia_cong) VALUES (%s, %s, %s, %s, %s)", 
                           (ten_sp, nhom_sp, dinh_muc, gia_nhua, gia_cong))
                 conn.commit()
                 st.success(f"Đã thêm sản phẩm: {ten_sp}")
@@ -46,7 +46,7 @@ with tab2:
         if submit_kh and ten_kh:
             c = conn.cursor()
             try:
-                c.execute("INSERT INTO dm_khach_hang (ten_kh, nhom_kh) VALUES (?, ?)", (ten_kh, nhom_kh))
+                c.execute("INSERT INTO dm_khach_hang (ten_kh, nhom_kh) VALUES (%s, %s)", (ten_kh, nhom_kh))
                 conn.commit()
                 st.success(f"Đã thêm khách hàng: {ten_kh}")
             except:
@@ -67,7 +67,7 @@ with tab3:
         if submit_vt and ten_vt:
             c = conn.cursor()
             try:
-                c.execute("INSERT INTO dm_vat_tu (ten_vat_tu, loai_vat_tu) VALUES (?, ?)", (ten_vt, loai_vt))
+                c.execute("INSERT INTO dm_vat_tu (ten_vat_tu, loai_vat_tu) VALUES (%s, %s)", (ten_vt, loai_vt))
                 conn.commit()
                 st.success(f"Đã thêm vật tư: {ten_vt}")
             except:
