@@ -82,7 +82,7 @@ with tab2:
             c = conn.cursor()
             c.execute("""INSERT INTO nhat_ky_san_xuat 
                          (ngay, ca_lam_viec, may_ep, ten_tho, san_pham, mau_sac, so_rap, tong_shot, sl_ly_thuyet, phe_pham, thanh_pham, khoi_luong_sp, tong_kl, ghi_chu)
-                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                         VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
                       (ngay.strftime("%Y-%m-%d"), ca, may_ep, tho, san_pham, mau_sac, so_rap, tong_shot, sl_ly_thuyet, phe_pham, thanh_pham, kl_sp, tong_kl, ghi_chu))
             conn.commit()
             
