@@ -27,7 +27,7 @@ with tab1:
         if submit_nv and ten_nv:
             c = conn.cursor()
             try:
-                c.execute("INSERT INTO nhan_vien (ten_nv, chuc_vu, luong_co_ban, phu_cap_co_dinh) VALUES (?, ?, ?, ?)", 
+                c.execute("INSERT INTO nhan_vien (ten_nv, chuc_vu, luong_co_ban, phu_cap_co_dinh) VALUES (%s, %s, %s, %s)", 
                           (ten_nv, chuc_vu, luong_cb, phu_cap))
                 conn.commit()
                 st.success(f"Đã thêm nhân viên: {ten_nv}")
@@ -86,7 +86,7 @@ with tab2:
                 try:
                     c.execute("""INSERT INTO bang_luong 
                                  (thang_nam, ten_nv, luong_co_ban, phu_cap, ngay_cong, thuong, phat, tam_ung, thuc_lanh, ghi_chu)
-                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
                               (thang_nam, nv_chon, luong_cb_hien_tai, phu_cap_hien_tai, ngay_cong, thuong, phat, tam_ung, thuc_lanh, ghi_chu))
                     conn.commit()
                     st.success(f"✅ Đã lưu lương tháng {thang_nam} cho {nv_chon}. Thực lãnh: {thuc_lanh:,.0f} VNĐ")
