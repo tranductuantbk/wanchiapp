@@ -74,6 +74,7 @@ with tab2:
                 conn.commit()
                 st.success(f"✅ Đã lưu Hóa đơn {so_hd}. Tổng cộng: {tong_cong:,.0f} đ.")
             except:
+                conn.rollback()
                 st.error(f"⚠️ Lỗi: Số Hóa đơn {so_hd} đã tồn tại trong hệ thống!")
 
 # --- TAB 3: CẬP NHẬT THANH TOÁN ---
