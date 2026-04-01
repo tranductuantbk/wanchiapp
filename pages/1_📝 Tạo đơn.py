@@ -40,7 +40,7 @@ else:
             c = conn.cursor()
             c.execute("""INSERT INTO don_hang
                          (ngay, so_phieu, ten_kh, ten_sp, so_luong, don_gia, doanh_thu, tong_nvl, tong_cong_ep, loi_nhuan)
-                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                         VALUES (%s, %s, %s, %s, %s,%s, %s, %s, %s, %s)""",
                       (ngay.strftime("%Y-%m-%d"), so_phieu, khach_hang, san_pham, so_luong, don_gia, doanh_thu, tong_nvl, tong_cong_ep, loi_nhuan))
             conn.commit()
             
